@@ -1,4 +1,4 @@
-// пробую повторить вариант из решения
+// вариант из решения
 
 const fs = require('fs');
 const readline = require('readline');
