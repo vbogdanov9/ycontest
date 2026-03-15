@@ -27,25 +27,17 @@ rl.on('line', (line) => {
     let [P, V] = lines[0].split(' ').map(Number);
     let [Q, M] = lines[1].split(' ').map(Number);
 
-    // инициализируем результат
-    let result = 0;
-
-    // растояние между центрами
-    const Distance = Math.abs(P - Q);
-
-    //сумма радиусов
-    const rSum = V + M;
-
-    // разница расстояние - сумма радиусов
-    const Diff = Distance - rSum;
-
     //количество деревьев для васи
     let sum1 = V * 2 + 1;
     //для маши
     let sum2 = M * 2 + 1;
 
-    //количество при отсутствии пересечений
-    const maxSum = sum1 + sum2;
+    //максимальная сумма
+    const maxSum = Math.max(sum1, sum2);
+    console.log(
+      `максимальная сумма maxSum maxSum = Math.max(sum1, sum2) = ${maxSum}`
+    );
+
 
     console.log(
       `Вася\nдерево P = ${P} , удаляется на V = ${V} метров, красит sum1 = ${sum1} деревьев`
@@ -54,22 +46,29 @@ rl.on('line', (line) => {
       `Маша\nдерево Q = ${Q}  , удаляется M = ${M} метров, красит sum2 = ${sum2} деревьев`
     );
 
+    // растояние между центрами
+    const Distance = Math.abs(P - Q);
     console.log(
       `растояние между центрами Distance = Math.abs(P - Q) = ${Distance}`
     );
 
+    //сумма радиусов
+    const rSum = V + M;
     console.log(`сумма радиусов rSum = V + M = ${rSum}`);
 
-    console.log(
-      `разница расстояние - сумма радиусов Diff = Distance - rSum = ${Diff}`
-    );
+    // пересечение
+    let Diff = rSum - Distance + 1;
+    console.log(`Пересечение Diff = rSum - Distance + 1 =  ${Diff}`);
+    Diff = Diff > 0 ? Diff : 0;
+    console.log(`отбрасываем отрицательные Diff > 0 ? Diff : 0 =  ${Diff}`);
 
-    console.log(
-      `количество при отсутствии пересечений maxSum =  sum1 + sum2 = ${maxSum}`
-    );
+
+
+    // инициализируем результат
+    let result = sum1 + sum2 - Diff;
+    console.log(`result = maxSum -Diff = ${result}`);
 
     // а если просто добавим в массив, и потом будем добавлять второй массив
-
     //масив для васи
     //номер первого дерева
     const firstVasyas = P - V;
@@ -110,15 +109,8 @@ rl.on('line', (line) => {
       `Объединенный массив Trees = ${Trees} , его длина = ${Trees.length}`
     );
 
-    // рассмотрим разные случаи
-
-    // последний элемент маши < первого васи тогда результат - простая сумма
-    const lastMashas = Q + M;
-    console.log(`последнее дерево для маши ${lastMashas}`);
-
-    if (lastMashas < firstVasyas) {
-      result = sum1 + sum2;
-    }
+    result = Trees.length;
+    console.log(`посчитано вручную: result = Trees.length = ${result} `);
   }
 });
 
