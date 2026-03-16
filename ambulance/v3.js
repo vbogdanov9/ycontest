@@ -18,16 +18,15 @@ rl.on('line', (line) => {
     console.log(
       `номер искомой квартиры k1 =  ${k1},
       этажей в доме m = ${m}
-      известно что квартира
-      с номером k2= ${k2}
-      находится в подъезде p2= ${p2}
+      квартра k2= ${k2}
+      подъезд p2= ${p2}
       на этаже n2=${n2}`
     );
 
     // функция заполнения площадки квартирами
     function fillingTheFloor(curEntr, curFl, apsOnFloor, Bulding) {
       console.log(`заполняем площадку с данными `);
-      console.log(curEntr, curFl, apsOnFloor, Bulding);
+      console.log(curEntr, curFl, apsOnFloor);
       let fillingCompleted = false;
 
       for (let apOnFloor = 1; apOnFloor <= apsOnFloor; apOnFloor++) {
@@ -58,16 +57,16 @@ rl.on('line', (line) => {
 
     // функция заполнения подъезда этажами
     function fillingTheEntrance(curEntr, maxFl, apsOnFloor, Bulding) {
-      console.log(
-        `заполняем подъезд, данные: подъезд, макс этаж, кв на этаже, здание`
-      );
-      console.log(curEntr, maxFl, apsOnFloor, Bulding);
+      // console.log(
+      //   `заполняем подъезд, данные: подъезд, макс этаж, кв на этаже, здание`
+      // );
+      // console.log(curEntr, maxFl, apsOnFloor, Bulding);
       for (let currentFloor = 1; currentFloor <= maxFl; currentFloor++) {
         // идем по площадке на этаже заполняем квартирами
         fillingTheFloor(curEntr, currentFloor, apsOnFloor, Bulding);
       }
       console.log(`после заполнения, данные:`);
-      console.log(curEntr, maxFl, apsOnFloor, Bulding);
+      console.log(curEntr, maxFl, apsOnFloor);
     }
 
     // подбираем количество квартир на площадке (начальное 1), увеличиваем пока не совпадет со входными данными
@@ -86,21 +85,18 @@ rl.on('line', (line) => {
       if (apartmentNumber === k2) {
         fillingCompleted = true;
       }
-      let lastFilledAp = [
-        apartmentNumber,
-        entrance,
-        floor,
-        apOnFloor,
-        fillingCompleted,
+      // let lastFilledAp = [
+      //   apartmentNumber,
+      //   entrance,
+      //   floor,
+      //   apOnFloor,
+      //   fillingCompleted,
+      // ];
+
+      let Bulding = [
+        [apartmentNumber, entrance, floor, apOnFloor, fillingCompleted],
       ];
-
-      let Bulding = [];
-      Bulding.push(lastFilledAp);
-      // масситв последней помещенной в дом квартиры
-
-      //
-
-      // идем по подъездам кроме последнего
+      console.log(Bulding);
       for (
         let currentEntrance = 1;
         currentEntrance <= p2 - 1;
@@ -113,6 +109,12 @@ rl.on('line', (line) => {
         //   break;
         // }
       }
+
+      /*
+
+
+      // идем по подъездам кроме последнего
+
 
       // идем по последнему подъезду p2 по этажам до n2
       if (!fillingCompleted) {
@@ -163,7 +165,7 @@ rl.on('line', (line) => {
         }
       } else {
         console.log(`НЕ дошли до квартиры номер k2 = ${k2}`);
-      }
+      }*/
     }
   }
 });
