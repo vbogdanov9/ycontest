@@ -39,11 +39,11 @@ rl.on('line', (line) => {
 
   // ищем второй самый большой элемент
   let max2 = input[0];
-  let max2Index = 0;
+  // let max2Index = 0;
   for (let i = 1; i < input.length; i++) {
     if (input[i] > max2) {
       max2 = input[i];
-      max2Index = i;
+      // max2Index = i;
     }
   }
   // console.log(`max2 = ${max2}, input[${max2Index}] = ${input[max2Index]}`);
@@ -77,12 +77,12 @@ rl.on('line', (line) => {
 
   // в измененном массиве найдем минимальный , второй минимальный в исходном
   let min2 = input[0];
-  let min2Index = 0;
+  // let min2Index = 0;
 
   for (let i = 1; i < input.length; i++) {
     if (input[i] < min2) {
       min2 = input[i];
-      min2Index = i;
+      // min2Index = i;
     }
   }
   // console.log(input);
