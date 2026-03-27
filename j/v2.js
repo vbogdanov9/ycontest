@@ -4,8 +4,6 @@ https://new.contest.yandex.ru/contests/89515/problems?id=30404%2F2021_08_19%2FQ2
 
 */
 
-// ввод с 3 строками
-
 const fs = require('fs');
 const readline = require('readline');
 
@@ -38,23 +36,14 @@ rl.on('line', (line) => {
 
   if (lines.length === N + 1) {
     for (let i = 1; i <= N; i++) {
-      // console.log(lines[i]);
       let coords = lines[i];
       let points = [];
-      for (let j = 0; j <= coords.length - 1; j += 2) {
+      for (let j = 0; j <= 7; j += 2) {
         points.push([coords[j], coords[j + 1]]);
       }
-      // console.log('до сортировки:');
-      // console.log(points);
-      // points.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
       points.sort((a, b) => a[0] - b[0]);
       points.sort((a, b) => a[1] - b[1]);
-      // console.log('после сортировки:');
-      // console.log(points);
       let res = check(points);
-      // if (res === 'NO') {
-      //   console.log(...lines[i]);
-      // }
       console.log(res);
     }
   }
